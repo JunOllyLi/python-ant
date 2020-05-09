@@ -10,7 +10,9 @@ SERIAL = '/dev/ttyUSB0'
 # from/to the stick.
 # Some demos depend on this setting being True, so unless you know what you
 # are doing, leave it as is.
-DEBUG = True
+#DEBUG = True
+DEBUG = False
+VPOWER_DEBUG = True
 
 # Set to None to disable logging
 #LOG = None
