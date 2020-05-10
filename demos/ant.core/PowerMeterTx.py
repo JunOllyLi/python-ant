@@ -42,11 +42,11 @@ class PowerMeterTx(object):
         self.channel.unassign()
 
     # Power was updated, so send out an ANT+ message
-    def update(self, power):
+    def update(self, cadence, accPower, power):
         if VPOWER_DEBUG: print ('PowerMeterTx: update called with power ', power)
         self.powerData.eventCount = (self.powerData.eventCount + 1) & 0xff
         if VPOWER_DEBUG: print ('eventCount ', self.powerData.eventCount)
-        self.powerData.cumulativePower = (self.powerData.cumulativePower + int(power)) & 0xffff
+        self.powerData.cumulativePower = (int(accPower) & 0xffff)
         if VPOWER_DEBUG: print ('cumulativePower ', self.powerData.cumulativePower)
         self.powerData.instantaneousPower = int(power)
         if VPOWER_DEBUG: print ('instantaneousPower ', self.powerData.instantaneousPower)
@@ -55,7 +55,7 @@ class PowerMeterTx(object):
         payload[0] = 0x10
         payload[1] = self.powerData.eventCount
         payload[2] = 0xFF  # Pedal power not used
-        payload[3] = 0xFF  # Cadence not used
+        payload[3] = int(cadence) & 0xFF
         payload[4] = self.powerData.cumulativePower & 0xff
         payload[5] = self.powerData.cumulativePower >> 8
         payload[6] = self.powerData.instantaneousPower & 0xff

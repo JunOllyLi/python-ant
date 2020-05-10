@@ -12,7 +12,8 @@ SERIAL = '/dev/ttyUSB0'
 # are doing, leave it as is.
 #DEBUG = True
 DEBUG = False
-VPOWER_DEBUG = True
+VPOWER_DEBUG = False
+#VPOWER_DEBUG = True
 
 # Set to None to disable logging
 #LOG = None
