@@ -16,9 +16,9 @@ VPOWER_DEBUG = False
 #VPOWER_DEBUG = True
 
 # Set to None to disable logging
-#LOG = None
-LOG = log.LogWriter()
+LOG = None
+#LOG = log.LogWriter()
 
 # ========== DO NOT CHANGE ANYTHING BELOW THIS LINE ==========
-print("Using log file:", LOG.filename)
-print("")
+#print("Using log file:", LOG.filename)
+#print("")
