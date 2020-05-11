@@ -22,11 +22,6 @@ class ble_hrm_app(gatt_service_app):
 
 hr_measurement = None
 class HeartRateService(Service):
-    """
-    Fake Heart Rate Service that simulates a fake heart beat and control point
-    behavior.
-
-    """
     HR_UUID = '0000180d-0000-1000-8000-00805f9b34fb'
 
     def __init__(self, bus, index):
@@ -34,9 +29,10 @@ class HeartRateService(Service):
         Service.__init__(self, bus, index, self.HR_UUID, True)
         hr_measurement = HeartRateMeasurementChrc(bus, 0, self)
         self.add_characteristic(hr_measurement)
-        self.add_characteristic(BodySensorLocationChrc(bus, 1, self))
-        self.add_characteristic(HeartRateControlPointChrc(bus, 2, self))
+        #self.add_characteristic(BodySensorLocationChrc(bus, 1, self))
+        #self.add_characteristic(HeartRateControlPointChrc(bus, 2, self))
         self.energy_expended = 0
+        hr_measurement.update_hr(0)
 
 
 class HeartRateMeasurementChrc(Characteristic):

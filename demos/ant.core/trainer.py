@@ -53,7 +53,7 @@ def main():
                                                          'onPowerUpdated': updatePower})
 
     # Unpaired, search:
-    #hr.open()
+    hr.open()
     pm.open()
     fe.open()
     # Paired to a specific device:
