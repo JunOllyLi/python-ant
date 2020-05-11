@@ -48,7 +48,7 @@ class PowerMeterTx(DeviceProfile):
             if VPOWER_DEBUG: print ('PowerMeterTx: update called with power ', power)
             self.powerData.eventCount = (self.powerData.eventCount + 1) & 0xff
             if VPOWER_DEBUG: print ('eventCount ', self.powerData.eventCount)
-            self.powerData.cumulativePower = (int(accPower) & 0xffff)
+            self.powerData.cumulativePower = (self.powerData.cumulativePower + int(power) & 0xffff)
             if VPOWER_DEBUG: print ('cumulativePower ', self.powerData.cumulativePower)
             self.powerData.instantaneousPower = int(power)
             if VPOWER_DEBUG: print ('instantaneousPower ', self.powerData.instantaneousPower)
